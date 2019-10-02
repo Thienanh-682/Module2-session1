@@ -5,17 +5,36 @@
     <title>Title</title>
 </head>
 <body>
-    <form>
-        Inventment Amount: <input type="text" name="amount" ><br>
-        Yearly Interest Rate: <input type="text" name="rate" ><br>
-        Number of Years: <input type="text" name="year"><br>
-        <input type="submit" value="Calculate">
-    </form>
+<form method="post" >
+    <table>
+        <tr>
+            <td>Investment Amount: </td>
+            <td><input type="text" name="InventmentAmount"></td>
+        </tr>
+        <tr>
+            <td>Yearly Interest Rate: </td>
+            <td><input type="text" name="YearlyInterestRate"></td>
+        </tr>
+        <tr>
+            <td>Number of Years: </td>
+            <td><input type="text" name="NumberOfYears"></td>
+        </tr>
+    </table>
+    <input type="submit" value="calculate">
+</form>
     <?php
      if ($_SERVER["REQUEST_METHOD"]=="POST") {
-         $amount=$_POST['amount'];
-         $rate=$_POST['rate'];
-         $year=$_POST['year'];
+         $InventmentAmount=$_POST['InventmentAmount'];
+         $YearlyInterestRate=$_POST['YearlyInterestRate'];
+         $NumberOfYears=$_POST['NumberOfYears'];
+         $futerValue = $InventmentAmount+ ($InventmentAmount * $YearlyInterestRate /100)*$NumberOfYears;
+         echo "Investment Amount: $InventmentAmount";
+         echo "<br>";
+         echo "Yearly Interest Rate: $YearlyInterestRate%";
+         echo "<br>";
+         echo "Number of Years: $NumberOfYears";
+         echo "<br>";
+         echo "Future Value: $futerValue";
      }
     ?>
 </body>
